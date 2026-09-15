@@ -1,0 +1,128 @@
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(2, 3, 5, 0.65) 100%);
+}
+
+.hud-panel {
+  position: absolute;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 0 24px rgba(90, 160, 220, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  padding: 16px 20px;
+}
+
+.hud-brand {
+  top: 28px;
+  left: 28px;
+}
+
+.hud-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.hud-subtitle {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.hud-status {
+  top: 28px;
+  right: 28px;
+  min-width: 190px;
+}
+
+.hud-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+.hud-status-row {
+  justify-content: flex-start;
+}
+
+.hud-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--core-cyan);
+  box-shadow: 0 0 8px 1px var(--core-cyan);
+  animation: hud-pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.hud-label {
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.hud-value {
+  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+}
+
+.hud-value-online {
+  color: var(--core-cyan);
+}
+
+.hud-divider {
+  height: 1px;
+  background: var(--panel-border);
+  margin: 8px 0;
+}
+
+@keyframes hud-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@media (max-width: 640px) {
+  .hud-brand,
+  .hud-status {
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    padding: 12px 16px;
+  }
+  .hud-status {
+    top: auto;
+    bottom: 16px;
+  }
+}
